@@ -54,3 +54,41 @@ var fruit = {apple:2,orange:5,pear:1};
 for(var kindIndex in fruit){
     console.info(fruit[kindIndex])
 }
+
+var myProto = {
+    isPropertyExists: function (name) {
+        return name in  this;
+    }
+}
+
+var myNumbers = {
+    __proto__: myProto,
+    array:[],
+    add(items){
+        this.array.push(items);
+    },
+};
+myNumbers.isPropertyExists("");
+
+
+var mammal = function (spec) {
+    var that = {};
+    that.get_name = function () {
+        return spec.name;
+    }
+    that.says = function () {
+        return spec.saying || '';
+    }
+    return that;
+}
+
+Object.method('',function (name) {
+
+});
+var  coolCat = function (spec) {
+    const that = mammal(spec);
+    let super_get_name = that.superior('get_name');
+    that.get_name = function () {
+        return 'like ' + super_get_name
+    }
+};
